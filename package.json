@@ -1,0 +1,32 @@
+{
+  "name": "generator-angular-test",
+  "version": "0.1.0",
+  "description": "Generate Angular JS Unit and End-to-End test files.",
+  "homepage": "",
+  "author": {
+    "name": "David Breuer",
+    "email": "dbreuer83@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "generators"
+  ],
+  "main": "generators/index.js",
+  "keywords": [
+    "angular",
+    "karma",
+    "jasmine",
+    "protractor",
+    "cucumberjs",
+    "e2e",
+    "unit",
+    "test"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.1",
+    "html-wiring": "^1.2.0",
+    "path": "^0.12.7",
+    "yeoman-generator": "^0.20.2",
+    "yosay": "^1.1.0"
+  }
+}

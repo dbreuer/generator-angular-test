@@ -24,5 +24,9 @@ describe('Module: <%= moduleName %>', function () {
         scope = $rootScope.$new();
     }));
 
-
+    it('Should to run the basic stuff', function(done){
+        var nulla = 'zero';
+        expect(nulla).toBe('zero');
+        done();
+    });
 });

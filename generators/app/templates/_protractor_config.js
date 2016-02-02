@@ -9,28 +9,40 @@
 
 //<%= moduleName %>
 
+var env = require('./environment.js');
+
 
 exports.config = {
 
-    seleniumAddress: '<%= protractor.seleniumAddress %>',
+    seleniumAddress: env.seleniumAddress,
+    allScriptsTimeout: 160000,
+    // set to "custom" instead of cucumber.
+    framework: 'custom',
+
+    // path relative to the current config file
+    frameworkPath: '<%= nodeModulesPath %>/protractor-cucumber-framework',
+
+    // relevant cucumber command line options
+    cucumberOpts: {
+        require: 'e2e/features/step_definitions/**/*.js',
+        tags: '@dev',
+        format: 'pretty',
+        profile: false,
+        'no-source': true
+    },
     capabilities: {
-        'browserName': 'phantomjs',
-        'phantomjs.binary.path':'./node_modules/phantomjs/bin/phantomjs',
-        'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
+        browserName: 'firefox'
     },
-    jasmineNodeOpts: {
-        isVerbose: true
-    },
+
     specs: [
-        'e2e/*.e2e.js'
+        'e2e/features/*.feature'
     ],
+
+    baseUrl: env.baseUrl + '/',
     onPrepare: function() {
+
+        // you can also add properties to globals here
         global.VARS = {};
-
-        //@todo: WORKING version on stage
-        //Careful with HTTP(S)
-        VARS.domainpath = '<%= protractor.localAddress %>';
-
         global.protractor = protractor;
         global.browser = browser;
         global.$ = browser.$;
@@ -39,14 +51,9 @@ exports.config = {
 
         browser.driver.manage().window().maximize();
 
-        global.isAngularSite = function(flag){
-            browser.ignoreSynchronization = !flag;
-        };
-        require('<%= nodeModulesPath%>/jasmine-reporters/src/load_reporters');
-        //HTML reporter
-        jasmine.getEnv().addReporter(
-            new jasmine.JUnitXmlReporter('xmloutput', true, true)
-        )
-
+        //global.isAngularSite = function(flag){
+        //    browser.ignoreSynchronization = !flag;
+        //};
+        browser.ignoreSynchronization = true;
     }
 };

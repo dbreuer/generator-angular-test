@@ -15,17 +15,19 @@ module.exports = function (config) {
         autoWatch: false,
 
         // base path, that will be used to resolve files and exclude
-        basePath: '<%= karma.base_path %>',
+        basePath: '<%= base_path %>',
 
         // testing framework
-        frameworks: ['<%= karma.frameworks %>'],
+        frameworks: ['<%= frameworks %>'],
 
         // list of files / patterns to load in the browser
 
 
         files: [
             '<%= bowerComponentsPath %>/angular/angular.js',
-            '<%= bowerComponentsPath %>/angular-mocks/angular-mocks.js'
+            '<%= bowerComponentsPath %>/angular-mocks/angular-mocks.js',
+            'js/*.js',
+            'test/frontend/unit/*.spec.js'
         ],
 
 
@@ -33,9 +35,9 @@ module.exports = function (config) {
         exclude: [],
 
         //reporter plugins
-        reporters: ['<%= karma.reporters %>'],
+        reporters: ['progress','dots','coverage','junit'],
         // web server port
-        port: '<%= karma.port %>',
+        port: '<%= port %>',
 
         // Start these browsers, currently available:
         // - Chrome
@@ -50,7 +52,7 @@ module.exports = function (config) {
         ],
 
         preprocessors: {
-            '<%= karma.preProcessor %>': ['coverage']
+            '<%= preProcessor %>': ['coverage']
         },
 
         // optionally, configure the reporter

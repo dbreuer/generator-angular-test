@@ -58,7 +58,20 @@ module.exports = yeoman.generators.Base.extend({
     var d = new Date();
 
     // Have Yeoman greet the user.
-    this.log(yosay(
+    var bearMessage = '             ' +'\n'+
+    ' ╭━━╮   ╭━━╮ ' + '\n'+
+    ' ┃▔▏┗━━━┛▕▔┃ ' +'\n'+
+    ' ╰╱╭━╮ ╭━╮╲╯ ' +'\n'+
+    '  ▏┃'+chalk.blue('▊')+'┃ ┃'+chalk.blue('▊')+'┃▕  ' +'\n'+
+    '  ▏╰╱▔'+chalk.red('▇')+'▔╲╯▕  ' +'\n'+
+    '╱╲╲ ╲╰┻╯╱ ╱╱╲' +'\n'+
+    '╲ ╲╲ ▔▔▔ ╱╱ ╱' +'\n'+
+    ' ╲ ▔     ▔ ╱ ' +'\n'+
+    '  ╲ ╭━━━╮ ╱  ' +'\n'+
+    '   ▏┃   ┃▕   ' +'\n'+
+    '             ';
+    console.log(bearMessage);
+    this.log(chalk.red(
       'Welcome to the best ' + chalk.blue('Angular Test') + ' generator!'
     ));
 

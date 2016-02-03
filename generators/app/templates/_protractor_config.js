@@ -20,7 +20,7 @@ exports.config = {
     framework: 'custom',
 
     // path relative to the current config file
-    frameworkPath: '<%= nodeModulesPath %>/protractor-cucumber-framework',
+    frameworkPath: '<%= base_path %><%= nodeModulesPath %>/protractor-cucumber-framework',
 
     // relevant cucumber command line options
     cucumberOpts: {
@@ -31,7 +31,9 @@ exports.config = {
         'no-source': true
     },
     capabilities: {
-        browserName: 'firefox'
+        'browserName': 'phantomjs',
+        'phantomjs.binary.path':'./node_modules/phantomjs/bin/phantomjs',
+        'phantomjs.ghostdriver.cli.args': ['--loglevel=DEBUG']
     },
 
     specs: [
@@ -50,6 +52,8 @@ exports.config = {
         global.element = browser.element;
 
         browser.driver.manage().window().maximize();
+        browser.manage().timeouts().pageLoadTimeout(40000);
+        browser.manage().timeouts().implicitlyWait(25000);
 
         //global.isAngularSite = function(flag){
         //    browser.ignoreSynchronization = !flag;

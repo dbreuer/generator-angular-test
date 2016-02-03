@@ -10,7 +10,7 @@
 // expectations.
 var chai = require('chai');
 var chaiAsPromised = require('chai-as-promised');
-var Helper = require('./PageObject.js');
+var Helper = require('../support/aat.pageObject.js');
 var page = new Helper(/* options here */);
 
 chai.use(chaiAsPromised);
@@ -28,6 +28,10 @@ module.exports = function() {
 
     this.Given(/^I go on(?: the website)? "([^"]*)"$/, {timeout: 60 * 1000}, function(url, next) {
         page.navigateTo(url, next);
+    });
+
+    this.Given(/^I go on(?: the website)? homepage$/, {timeout: 60 * 1000}, function(next) {
+        page.navigateToHome(next);
     });
 
     this.Then(/^it should still do normal tests$/, function(next) {

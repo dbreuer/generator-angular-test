@@ -1,12 +1,12 @@
 {
   "name": "generator-angular-test",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "Generate Angular JS Unit and End-to-End test files.",
   "homepage": "",
   "author": {
     "name": "David Breuer",
     "email": "dbreuer83@gmail.com",
-    "url": ""
+    "url": "https://github.com/dbreuer/generator-angular-test"
   },
   "files": [
     "generators"

@@ -70,7 +70,7 @@ module.exports = yeoman.generators.Base.extend({
       nodeModulesPath: '../../../../../../themes/bootstrap_aat/node_modules',
       bowerComponentsPath: '../../../../themes/bootstrap_aat/bower_components',
       seleniumAddress: 'http://127.0.0.1:4444/wd/hub',
-      localAddress: 'http://aat.local/',
+      localAddress: 'aat.local/',
       base_path: '../../',
       frameworks: 'jasmine',
       files: [
@@ -78,7 +78,7 @@ module.exports = yeoman.generators.Base.extend({
         '/angular-mocks/angular-mocks.js'
       ],
       reporters: ['progress','dots','coverage','junit'],
-      port: 9999,
+      port: 9998,
       preProcessor: 'js/*.js'
 
     };
@@ -107,7 +107,7 @@ module.exports = yeoman.generators.Base.extend({
         {
           type: 'input',
           name: 'localAddress',
-          message: 'What is your local address?',
+          message: 'What is your local address (without http://)?',
           default: this.default.localAddress
         },
         {
@@ -203,15 +203,18 @@ module.exports = yeoman.generators.Base.extend({
       //E2E (protractor/cucumberjs) files
       this.template("_base.feature", "test/frontend/e2e/features/" + testName + ".feature", context);
       this.template("_protractor_config.js", "test/frontend/" + testName + "_protractor.conf.js", context);
-      this.template("_PageObject.js", "test/frontend/e2e/support/PageObject.js", context);
-      this.template("_stepDefinitions.js", "test/frontend/e2e/support/stepDefinitions.js", context);
+      this.template("_pageObject.js", "test/frontend/e2e/features/support/aat.pageObject.js", context);
+      this.template("_stepDefinitions.js", "test/frontend/e2e/features/step_definitions/stepDefinitions.js", context);
       this.template("_environment.js", "test/frontend/environment.js", context);
       this.template("_gitignore", "test/.gitignore");
 
       //@todo: add depencency
-      // NPM @ cucumber 0.9.4
-      // NPM @ protractor-cucumber-framework
+      // NPM @ cucumber@^0.9.1
+      // NPM @ protractor-cucumber-framework@^0.3.3
 
+      //@todo: add cucumber enviroment tags
+      //@todo: Simplify the tabs options in grunt (Gulp)
+      // grunt protractor --cucumberOpts={\"tags\":\"@failing\"}
   }
 
   //install: function () {

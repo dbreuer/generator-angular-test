@@ -61,11 +61,11 @@ module.exports = function (config) {
             reporters: [
                 {
                     type: 'html',
-                    dir: 'coverage/'
+                    dir: 'test/coverage/'
                 },
                 {
                     type: 'cobertura',
-                    file: 'results/<%= moduleName %>-coverage.xml'
+                    file: 'test/results/<%= moduleName %>-coverage.xml'
                 }
 
             ]
@@ -96,7 +96,7 @@ module.exports = function (config) {
         // possible values: LOG_DISABLE || LOG_ERROR || LOG_WARN || LOG_INFO || LOG_DEBUG
         logLevel: config.LOG_INFO,
         junitReporter: {
-            outputFile: 'results/<%= moduleName %>-results.xml',
+            outputFile: 'test/results/<%= moduleName %>-results.xml',
             suite: 'unit'
         }
         // Uncomment the following lines if you are using grunt's server to run the tests

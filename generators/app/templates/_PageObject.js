@@ -6,25 +6,32 @@
  * @description
  *
  */
-
+var env = require('../../../environment');
 var Helper = function (options) {
     this.sleeptime = 5000 || options.sleeptime;
 };
 
 Helper.prototype = Object.create({}, {
     navigateToHome: {
-        value: function(){
-            browser.sleep(Helper.sleeptime).then(function() {
-                browser.get(VARS.domainpath);
-            })
+        value: function(next){
+            browser.get(env.baseUrl);
+            browser.wait(function() {
+                return browser.getCurrentUrl(function(curl) {
+                    return baseUrl.test(curl);
+                });
+            });
+            next();
         }
     },
     navigateTo: {
         value: function(url, next){
-            browser.sleep(Helper.sleeptime).then(function() {
-                browser.get(url);
-                next();
-            })
+            browser.get(url);
+            browser.wait(function() {
+                return browser.getCurrentUrl(function(curl) {
+                    return url.test(curl);
+                });
+            });
+            next();
         }
     },
     loginAs: {

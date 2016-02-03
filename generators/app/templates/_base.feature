@@ -11,21 +11,20 @@ Feature: Running Cucumber with Protractor
 
   @dev
   Scenario: Wrapping WebDriver
-    Given I go on "index.html"
-    Then the title should equal "My AngularJS App"
+    Given I go on homepage
+    Then the title should equal "AAT | The professional body for accounting technicians"
 
   @failing
   Scenario: Report failures
-    Given I go on "index.html"
+    Given I go on "/"
     Then the title should equal "Failing scenario 1"
 
   @failing
   Scenario: Reporting multiple failures
-    Given I go on "index.html"
+    Given I go on "/"
     Then the title should equal "Failing scenario 2"
 
   @strict
   Scenario: Missing step definition
-    Given I go on "index.html"
+    Given I go on "/"
     Then this step is not defined
-  Status API Training Shop Blog About Pricing

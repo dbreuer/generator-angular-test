@@ -34,7 +34,7 @@ module.exports = {
 
     // A base URL for your application under test.
     baseUrl:
-    'http://' + (process.env.HTTP_HOST || 'localhost') +
+    'http://' + ( process.env.HTTP_HOST || '<%= localAddress %>') +
     ':' + (process.env.HTTP_PORT || webServerDefaultPort)
 
 };
